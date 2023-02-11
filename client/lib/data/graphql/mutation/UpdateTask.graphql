@@ -1,0 +1,7 @@
+mutation UpdateTask($id: ID!) {
+  updateTask(id: $id) {
+    id
+    title
+    done
+  }
+}
