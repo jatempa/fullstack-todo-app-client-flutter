@@ -1,0 +1,19 @@
+schema {
+  query: QueryRoot
+  mutation: MutationRoot
+}
+
+type Task {
+  id: ID!
+  title: String!
+  done: Boolean
+}
+
+type QueryRoot {
+  tasks: [Task]
+}
+
+type MutationRoot {
+  addTask(title: String!): Task
+  updateTask(id: ID!): Task
+}
