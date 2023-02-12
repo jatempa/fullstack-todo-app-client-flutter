@@ -16,4 +16,12 @@ class Task extends Equatable {
 
   @override
   bool get stringify => true;
+
+  factory Task.fromMap(Map<String, dynamic>? map) {
+    return Task(
+      id: map?['id'] ?? '',
+      title: map?['title'] ?? '',
+      done: map?['done'] ?? false,
+    );
+  }
 }
