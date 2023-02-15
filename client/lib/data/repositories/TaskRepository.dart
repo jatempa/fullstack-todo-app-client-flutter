@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:injectable/injectable.dart';
 
 import 'package:client/data/data_sources/TaskRemoteDataProvider.dart';
 import 'package:client/domain/entities/Task.dart';
 import 'package:client/domain/interfaces/ITaskRepository.dart';
 
-@LazySingleton(as: ITaskRepository )
 class TaskRepository implements ITaskRepository {
   final TaskRemoteDataProvider remoteDataProvider;
 
@@ -24,7 +22,7 @@ class TaskRepository implements ITaskRepository {
 
     return null;
   }
-  
+
   @override
   Future<Task?> update(String? id) async {
     try {
@@ -36,5 +34,4 @@ class TaskRepository implements ITaskRepository {
 
     return null;
   }
-
 }

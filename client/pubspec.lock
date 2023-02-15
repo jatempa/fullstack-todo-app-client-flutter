@@ -238,6 +238,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_riverpod:
+    dependency: "direct main"
+    description:
+      name: flutter_riverpod
+      sha256: "46a27b7a11dc13738054093076f2dc65692ddcd463979b15092accf5681aea20"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -267,14 +275,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
-  get_it:
-    dependency: "direct main"
-    description:
-      name: get_it
-      sha256: "290fde3a86072e4b37dbb03c07bec6126f0ecc28dad403c12ffe2e5a2d751ab7"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.2.0"
   glob:
     dependency: transitive
     description:
@@ -363,22 +363,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
-  injectable:
-    dependency: "direct main"
-    description:
-      name: injectable
-      sha256: "7dab7d341feb40a0590d9ff6261aea9495522005e2c6763f9161a4face916f7b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.0"
-  injectable_generator:
-    dependency: "direct dev"
-    description:
-      name: injectable_generator
-      sha256: b206de637c1960007b0beebe447a6ee3cf30c9e5f14542083024a9d0c49a7a09
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.4"
   io:
     dependency: transitive
     description:
@@ -507,6 +491,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
+  riverpod:
+    dependency: transitive
+    description:
+      name: riverpod
+      sha256: "59a48de9c757aa61aa28e9fd625ffb360d43b6b54606f12536622c55be9e8c4b"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   shelf:
     dependency: transitive
     description:
@@ -560,6 +552,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.11.0"
+  state_notifier:
+    dependency: transitive
+    description:
+      name: state_notifier
+      sha256: "8fe42610f179b843b12371e40db58c9444f8757f8b69d181c97e50787caed289"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.2+1"
   stream_channel:
     dependency: transitive
     description:
@@ -650,3 +650,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.19.2 <3.0.0"
+  flutter: ">=3.0.0"

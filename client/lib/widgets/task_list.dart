@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:client/di/app.dart';
+import 'package:client/di/providers.dart';
 import 'package:client/domain/entities/Task.dart';
-import 'package:client/domain/services/TaskService.dart';
 import 'package:client/widgets/task_item.dart';
 
-class TaskList extends StatefulWidget {
+class TaskList extends ConsumerStatefulWidget {
 
   const TaskList({super.key});
 
   @override
-  State<TaskList> createState() => _TaskListState();
+  ConsumerState<TaskList> createState() => _TaskListState();
 }
 
-class _TaskListState extends State<TaskList> {
-  final _svc = getIt<TaskService>();
-
+class _TaskListState extends ConsumerState<TaskList> {
   Future<List<Task>?> getTasks() async {
-    try {
-      return _svc.fetchAll();
-    } catch (e) {
-      debugPrint('$e');
-    }
-
-    return null;
+    return await ref.read(taskServiceProvider).fetchAll();
   }
 
   @override
@@ -43,8 +35,8 @@ class _TaskListState extends State<TaskList> {
             var task = tasks?[index];
             return GestureDetector(
               onTap: () async {
-                final updatedTask = await _svc.update(task?.id);
-                setState(() => task = updatedTask);
+                // final updatedTask = await _svc.update(task?.id);
+                // setState(() => task = updatedTask);
               },
               child: TaskItem(task: task)
             );
