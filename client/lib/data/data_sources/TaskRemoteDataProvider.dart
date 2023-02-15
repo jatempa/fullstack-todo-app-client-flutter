@@ -1,15 +1,16 @@
 import 'package:artemis/artemis.dart';
-import 'package:client/data/graphql/mutation/UpdateTask.graphql.dart';
-import 'package:client/domain/entities/Task.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 
+import 'package:client/data/graphql/mutation/UpdateTask.graphql.dart';
+import 'package:client/domain/entities/Task.dart';
 import 'package:client/data/graphql/query/GetAllTasks.graphql.dart';
 import 'package:client/data/models/TaskModel.dart';
 
 @lazySingleton
 class TaskRemoteDataProvider {
-  final _artemisClient = ArtemisClient('http://10.0.2.2:4000/');
+  final _artemisClient = ArtemisClient(dotenv.env['API_URL']!);
 
   Future<List<TaskModel>?> getTasks() async {
     try {
