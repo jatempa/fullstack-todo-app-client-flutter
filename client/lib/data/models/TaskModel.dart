@@ -1,15 +1,15 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Task.g.dart';
+part 'TaskModel.g.dart';
 
 @JsonSerializable()
-class Task extends Equatable {
+class TaskModel extends Equatable {
   final String id;
   final String title;
   final bool done;
 
-  const Task({
+  const TaskModel({
     required this.id,
     required this.title,
     required this.done
@@ -21,7 +21,7 @@ class Task extends Equatable {
   @override
   bool get stringify => true;
 
-  factory Task.fromJson(Map<String, dynamic>? json) => _$TaskFromJson(json!);
+  factory TaskModel.fromJson(Map<String, dynamic>? json) => _$TaskModelFromJson(json!);
 
-  Map<String, dynamic> toJson() => _$TaskToJson(this);
+  Map<String, dynamic> toJson() => _$TaskModelToJson(this);
 }
