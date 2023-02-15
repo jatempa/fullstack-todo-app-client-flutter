@@ -13,17 +13,20 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   artemis: ^7.11.0-beta.1
-  json_annotation: ^4.7.0
   equatable: ^2.0.5
-  meta: '>=1.0.0 <2.0.0' # only if you have non nullable fields
   gql: '>=0.12.3 <1.0.0'
+  get_it: ^7.2.0
+  injectable: ^2.1.0
+  json_annotation: ^4.7.0
+  meta: '>=1.0.0 <2.0.0' # only if you have non nullable fields
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
   build_runner: ^2.3.3
+  flutter_lints: ^2.0.0
+  injectable_generator: ^2.1.4
   json_serializable: ^6.5.4
 
 flutter:
