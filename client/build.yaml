@@ -4,15 +4,12 @@ targets:
       artemis:
         options:
           schema_mapping:
-            - schema: lib/schema.graphql
+            - schema: lib/data/graphql/schema.graphql
               queries_glob: lib/data/graphql/query/GetAllTasks.graphql
               output: lib/data/graphql/query/GetAllTasks.dart
-              naming_schema: simple
-            - schema: lib/schema.graphql
+            - schema: lib/data/graphql/schema.graphql
               queries_glob: lib/data/graphql/mutation/CreateTask.graphql
               output: lib/data/graphql/mutation/CreateTask.dart
-              naming_schema: simple
-            - schema: lib/schema.graphql
+            - schema: lib/data/graphql/schema.graphql
               queries_glob: lib/data/graphql/mutation/UpdateTask.graphql
               output: lib/data/graphql/mutation/UpdateTask.dart
-              naming_schema: simple
