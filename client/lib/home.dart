@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:artemis/artemis.dart';
 
-import 'package:client/data/graphql/query/GetAllTasks.graphql.dart';
-import 'package:client/models/Task.dart';
+import 'package:client/di/app.dart';
+import 'package:client/domain/entities/Task.dart';
+import 'package:client/domain/services/TaskService.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -14,19 +14,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _artemisClient = ArtemisClient('http://10.0.2.2:4000/');
+  final _svc = getIt<TaskService>();
 
   Future<List<Task>?> getTasks() async {
     try {
-      final response = await _artemisClient.execute(GetAllTasksQuery());
-
-      if (response.hasErrors) {
-        throw ErrorDescription('Error: ${response.errors?.first.message}');
-      }
-
-      final tasks = response.data?.tasks;
-
-      return tasks?.map((task) => Task.fromMap(task?.toJson())).toList();
+      return _svc.fetchAll();
     } catch (e) {
       debugPrint('$e');
     }
@@ -57,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 margin: const EdgeInsets.all(8.0),
                 child: ListTile(
                   title: Text('${task?.title}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                  trailing: (task != null && task.done)
+                  trailing: (task != null && task.done!)
                   ? Container(color: Colors.green, width: 25, height: 25)
                   : Container(color: Colors.grey, width: 25, height: 25),
                 )
