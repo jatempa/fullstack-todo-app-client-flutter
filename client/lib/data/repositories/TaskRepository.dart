@@ -24,4 +24,17 @@ class TaskRepository implements ITaskRepository {
 
     return null;
   }
+  
+  @override
+  Future<Task?> update(String? id) async {
+    try {
+      final task = await remoteDataProvider.updateTask(id);
+      return Task.fromJson(task?.toJson());
+    } catch (e) {
+      debugPrint('$e');
+    }
+
+    return null;
+  }
+
 }

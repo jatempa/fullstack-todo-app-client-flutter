@@ -21,4 +21,14 @@ class TaskService {
 
     return null;
   }
+
+  Future<Task?> update(String? id) async {
+    try {
+      return await repository.update(id);
+    } catch (e) {
+      debugPrint('$e');
+    }
+
+    return null;
+  }
 }

@@ -44,14 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
           return ListView.builder(
             itemCount: tasks?.length,
             itemBuilder: (context, index) {
-              final task = tasks?[index];
+              var task = tasks?[index];
               return Card(
                 margin: const EdgeInsets.all(8.0),
                 child: ListTile(
+                  onTap: () async {
+                    final updatedTask = await _svc.update(task?.id);
+                    setState(() => task = updatedTask);
+                  },
                   title: Text('${task?.title}', style: const TextStyle(fontWeight: FontWeight.bold)),
-                  trailing: (task != null && task.done!)
-                  ? Container(color: Colors.green, width: 25, height: 25)
-                  : Container(color: Colors.grey, width: 25, height: 25),
+                  trailing:  _buildStatusIndicator(task),
                 )
               );
             },
@@ -59,5 +61,11 @@ class _MyHomePageState extends State<MyHomePage> {
         }
       )
     );
+  }
+  
+  _buildStatusIndicator(Task? task) {
+    return (task != null && task.done!)
+    ? Container(color: Colors.green, width: 25, height: 25)
+    : Container(color: Colors.grey, width: 25, height: 25);
   }
 }

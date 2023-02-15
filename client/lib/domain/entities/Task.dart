@@ -13,7 +13,7 @@ class Task with _$Task {
     bool? done
   }) = _Task;
 
-  factory Task.fromJson(Map<String, dynamic> json) => _$TaskFromJson(json);
+  factory Task.fromJson(Map<String, dynamic>? json) => _$TaskFromJson(json!);
 
   @override
   String toString() => title!;
