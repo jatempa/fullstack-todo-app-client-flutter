@@ -19,7 +19,7 @@ class TaskRemoteDataProvider {
 
       final tasks = response.data?.tasks;
 
-      return tasks?.map((task) => Task.fromMap(task?.toJson())).toList();
+      return tasks?.map((task) => Task.fromJson(task?.toJson())).toList();
     } catch (e) {
       debugPrint('$e');
     }

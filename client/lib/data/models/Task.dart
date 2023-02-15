@@ -1,5 +1,9 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'Task.g.dart';
+
+@JsonSerializable()
 class Task extends Equatable {
   final String id;
   final String title;
@@ -17,11 +21,7 @@ class Task extends Equatable {
   @override
   bool get stringify => true;
 
-  factory Task.fromMap(Map<String, dynamic>? map) {
-    return Task(
-      id: map?['id'] ?? '',
-      title: map?['title'] ?? '',
-      done: map?['done'] ?? false,
-    );
-  }
+  factory Task.fromJson(Map<String, dynamic>? json) => _$TaskFromJson(json!);
+
+  Map<String, dynamic> toJson() => _$TaskToJson(this);
 }
