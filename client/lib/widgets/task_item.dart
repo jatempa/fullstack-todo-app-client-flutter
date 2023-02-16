@@ -18,7 +18,7 @@ class TaskItem extends ConsumerWidget {
       child: ListTile(
         onTap: () async {
           await ref.read(taskServiceProvider).update(task?.id);
-          ref.refresh(tasksProvider.future);
+          ref.refresh(tasksProvider);
         },
         title: Text(
           '${task?.title}',
