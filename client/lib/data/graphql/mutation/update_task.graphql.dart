@@ -4,7 +4,7 @@ import 'package:artemis/artemis.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
-part 'UpdateTask.graphql.g.dart';
+part 'update_task.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class UpdateTask$Mutation$Task extends JsonSerializable with EquatableMixin {

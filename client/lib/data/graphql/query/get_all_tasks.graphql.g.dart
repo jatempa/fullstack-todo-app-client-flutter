@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'GetAllTasks.graphql.dart';
+part of 'get_all_tasks.graphql.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

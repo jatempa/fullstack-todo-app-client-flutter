@@ -1,2 +1,2 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-export 'GetAllTasks.graphql.dart';
+export 'update_task.graphql.dart';
