@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'TaskModel.g.dart';
+part 'task_model.g.dart';
 
 @JsonSerializable()
 class TaskModel extends Equatable {

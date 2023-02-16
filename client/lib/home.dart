@@ -13,7 +13,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: TaskList()
+      body: const TaskList()
     );
   }
 }

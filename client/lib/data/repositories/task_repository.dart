@@ -1,8 +1,12 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:client/data/data_sources/TaskRemoteDataProvider.dart';
-import 'package:client/domain/entities/Task.dart';
-import 'package:client/domain/interfaces/ITaskRepository.dart';
+import 'package:client/data/data_sources/task_remote_data_provider.dart';
+import 'package:client/domain/entities/task.dart';
+
+abstract class ITaskRepository {
+  Future<List<Task>?> fetchAll();
+  Future<Task?> update(String? id);
+}
 
 class TaskRepository implements ITaskRepository {
   final TaskRemoteDataProvider remoteDataProvider;
