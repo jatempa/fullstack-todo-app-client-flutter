@@ -2,7 +2,7 @@ import 'package:client/domain/entities/task.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:client/data/data_sources/task_remote_data_provider.dart';
-import 'package:client/data/logic/task_state_notifier.dart';
+import 'package:client/data/logic/task_controller.dart';
 import 'package:client/data/repositories/task_repository.dart';
 
 ///Data Provider

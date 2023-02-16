@@ -10,7 +10,6 @@ class TaskList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(taskControllerProvider);
-
     return state.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       data: (tasks) => ListView.builder(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:client/data/logic/task_provider.dart';
 import 'package:client/domain/entities/task.dart';
 import 'package:client/widgets/status.dart';
 
@@ -15,10 +16,12 @@ class TaskItem extends ConsumerWidget {
       key: ValueKey(task?.id),
       margin: const EdgeInsets.all(8.0),
       child: ListTile(
-        // onTap: () async {
-        //   await ref.read(taskServiceProvider).update(task?.id);
-        //   ref.refresh(tasksProvider);
-        // },
+        onTap: () async {
+          await ref
+            .read(taskControllerProvider.notifier)
+            .updateTask(task?.id);
+          ref.refresh(taskControllerProvider);
+        },
         title: Text(
           '${task?.title}',
           style: const TextStyle(
