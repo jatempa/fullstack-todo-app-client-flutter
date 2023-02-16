@@ -20,7 +20,7 @@ class TaskItem extends ConsumerWidget {
           await ref
             .read(taskControllerProvider.notifier)
             .updateTask(task?.id);
-          ref.refresh(taskControllerProvider);
+          ref.invalidate(taskControllerProvider);
         },
         title: Text(
           '${task?.title}',
