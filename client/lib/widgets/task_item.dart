@@ -13,6 +13,7 @@ class TaskItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Card(
+      key: ValueKey(task?.id),
       margin: const EdgeInsets.all(8.0),
       child: ListTile(
         onTap: () async {
