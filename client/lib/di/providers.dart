@@ -19,7 +19,7 @@ final taskServiceProvider = Provider<TaskService>((ref) {
   return TaskService(repository: repositoryProvider);
 });
 
-final tasksProvider = FutureProvider<List<Task>?>((ref) async {
+final tasksProvider = FutureProvider.autoDispose<List<Task>?>((ref) async {
   final serviceProvider = ref.watch(taskServiceProvider);
   return await serviceProvider.fetchAll();
 });
