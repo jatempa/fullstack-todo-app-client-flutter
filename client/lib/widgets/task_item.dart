@@ -2,33 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:client/data/logic/task_provider.dart';
-import 'package:client/domain/entities/task.dart';
 import 'package:client/widgets/status.dart';
 
-class TaskItem extends ConsumerWidget {
-  final Task? task;
+class TaskItem extends ConsumerStatefulWidget {
+  final String? title;
+  final bool? done;
 
-  const TaskItem({super.key, this.task});
+  const TaskItem({super.key, this.title, this.done});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<TaskItem> createState() => _TaskItemState();
+}
+
+class _TaskItemState extends ConsumerState<TaskItem> {
+
+  @override
+  Widget build(BuildContext context) {
+    final id = ref.watch(currentTaskId);
     return Card(
-      key: ValueKey(task?.id),
+      key: ValueKey(id),
       margin: const EdgeInsets.all(8.0),
       child: ListTile(
         onTap: () async {
           await ref
             .read(taskControllerProvider.notifier)
-            .updateTask(task?.id);
+            .updateTask(id);
           ref.invalidate(taskControllerProvider);
         },
-        title: Text(
-          '${task?.title}',
+        title: Text('${widget.title}',
           style: const TextStyle(
             fontWeight: FontWeight.bold
           )
         ),
-        trailing: Status(status: task?.done)
+        trailing: Status(
+          status: widget.done
+        )
       )
     );
   }

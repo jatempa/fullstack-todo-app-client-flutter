@@ -21,3 +21,5 @@ final taskRepositoryProvider = Provider<TaskRepository>(
 final taskControllerProvider = AsyncNotifierProvider.autoDispose<TaskController, List<Task>?>(
   () => TaskController()
 );
+
+final currentTaskId = Provider<String?>((_) => throw UnimplementedError());
