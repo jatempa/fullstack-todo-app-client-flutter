@@ -4,20 +4,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:client/data/logic/task_provider.dart';
 import 'package:client/widgets/status.dart';
 
-class TaskItem extends ConsumerStatefulWidget {
+class TaskItem extends ConsumerWidget {
   final String? title;
   final bool? done;
 
   const TaskItem({super.key, this.title, this.done});
 
   @override
-  ConsumerState<TaskItem> createState() => _TaskItemState();
-}
-
-class _TaskItemState extends ConsumerState<TaskItem> {
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final id = ref.watch(currentTaskId);
     return Card(
       key: ValueKey(id),
@@ -29,13 +23,13 @@ class _TaskItemState extends ConsumerState<TaskItem> {
             .updateTask(id);
           ref.invalidate(taskControllerProvider);
         },
-        title: Text('${widget.title}',
+        title: Text('$title',
           style: const TextStyle(
             fontWeight: FontWeight.bold
           )
         ),
         trailing: Status(
-          status: widget.done
+          status: done
         )
       )
     );
