@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:client/widgets/add_task.dart';
 import 'package:client/widgets/task_list.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -13,7 +14,8 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: const TaskList()
+      body: const TaskList(),
+      floatingActionButton: const AddTask()
     );
   }
 }
