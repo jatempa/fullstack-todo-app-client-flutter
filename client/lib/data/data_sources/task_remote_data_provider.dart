@@ -1,8 +1,8 @@
 import 'package:artemis/artemis.dart';
-import 'package:client/data/graphql/mutation/create_task.graphql.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:client/data/graphql/mutation/create_task.graphql.dart';
 import 'package:client/data/graphql/mutation/update_task.graphql.dart';
 import 'package:client/data/graphql/query/get_all_tasks.graphql.dart';
 import 'package:client/data/models/task_model.dart';

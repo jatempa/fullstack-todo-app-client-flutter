@@ -16,7 +16,6 @@ class _AddTaskState extends ConsumerState<AddTask> {
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(taskControllerProvider);
     return FloatingActionButton(
       onPressed: () async {
         await showDialog(

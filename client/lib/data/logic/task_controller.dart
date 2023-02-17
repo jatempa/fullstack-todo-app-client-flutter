@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:client/data/logic/task_provider.dart';
-import 'package:client/data/repositories/task_repository.dart';
 import 'package:client/domain/entities/task.dart';
 
 class TaskController extends AutoDisposeAsyncNotifier<List<Task>?> {
