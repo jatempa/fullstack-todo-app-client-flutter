@@ -6,6 +6,7 @@ import 'package:client/domain/entities/task.dart';
 abstract class ITaskRepository {
   Future<List<Task>?> fetchAllTasks();
   Future<Task?> updateTask(String? id);
+  Future<Task?> createTask(String? newTask);
 }
 
 class TaskRepository implements ITaskRepository {
@@ -31,6 +32,18 @@ class TaskRepository implements ITaskRepository {
   Future<Task?> updateTask(String? id) async {
     try {
       final task = await remoteDataProvider.updateTask(id);
+      return Task.fromJson(task?.toJson());
+    } catch (e) {
+      debugPrint('$e');
+    }
+
+    return null;
+  }
+
+  @override
+  Future<Task?> createTask(String? newTask) async {
+    try {
+      final task = await remoteDataProvider.createTask(newTask);
       return Task.fromJson(task?.toJson());
     } catch (e) {
       debugPrint('$e');

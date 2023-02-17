@@ -1,4 +1,5 @@
 import 'package:artemis/artemis.dart';
+import 'package:client/data/graphql/mutation/create_task.graphql.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -40,6 +41,28 @@ class TaskRemoteDataProvider {
       }
 
       final task = response.data?.updateTask;
+
+      return TaskModel.fromJson(task?.toJson());
+    } catch (e) {
+      debugPrint('$e');
+    }
+
+    return null;
+  }
+
+  Future<TaskModel?> createTask(String? newTask) async {
+    try {
+      final response = await _artemisClient.execute(
+        CreateTaskMutation(
+          variables: CreateTaskArguments(title: newTask!)
+        )
+      );
+
+      if (response.hasErrors) {
+        throw ErrorDescription('Error: ${response.errors?.first.message}');
+      }
+
+      final task = response.data?.addTask;
 
       return TaskModel.fromJson(task?.toJson());
     } catch (e) {

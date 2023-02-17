@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'package:client/data/logic/task_provider.dart';
+
 class AddTask extends ConsumerStatefulWidget {
   const AddTask({super.key});
 
@@ -14,6 +16,7 @@ class _AddTaskState extends ConsumerState<AddTask> {
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.watch(taskControllerProvider);
     return FloatingActionButton(
       onPressed: () async {
         await showDialog(
@@ -44,9 +47,18 @@ class _AddTaskState extends ConsumerState<AddTask> {
                     foregroundColor: Colors.blue
                   ),
                   child: Text('Save'.toUpperCase()),
-                  onPressed: () {
+                  onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      //print(_textEditingController.text);
+                      final newTask = _textEditingController.text;
+                      await ref
+                        .read(taskControllerProvider.notifier)
+                        .createTask(newTask);
+                      ref.invalidate(taskControllerProvider);
+
+                      _textEditingController.clear();
+
+                      if (!mounted) return;
+
                       Navigator.of(context).pop();
                     }
                   },

@@ -17,4 +17,9 @@ class TaskController extends AutoDisposeAsyncNotifier<List<Task>?> {
     final taskRepository = ref.read(taskRepositoryProvider);
     await taskRepository.updateTask(id);
   }
+
+  Future<void> createTask(String? newTask) async {
+    final taskRepository = ref.read(taskRepositoryProvider);
+    await taskRepository.createTask(newTask);
+  }
 }
